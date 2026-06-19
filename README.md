@@ -1,75 +1,74 @@
-# Hospital ER Patient Analytics Dashboard 🏥
+# 🏥 Hospital Emergency Room (ER) Dashboard — Power BI
 
-A Power BI dashboard (`my_pbi34.pbix`) that analyzes hospital Emergency Room (ER) patient data — admissions, wait times, demographics, and satisfaction scores — across three interactive report pages.
+An interactive Power BI dashboard that analyzes Hospital Emergency Room (ER) operations, giving hospital management visibility into patient volume, wait times, satisfaction, demographics, and department referrals to support faster, data-driven operational decisions.
 
-## 📊 Overview
+## 📌 Overview
 
-This report connects to a single fact table (`Hospital ER_Data`) plus a `Date Table` for time intelligence, and visualizes key ER operational metrics such as patient volume, wait times, admission status, and patient satisfaction.
+This dashboard is built on a single fact table (`Hospital ER_Data`) joined to a `Date Table`, and is organized into three report pages: a monthly trends view, a consolidated/summary view with a flexible date range, and a patient-level detail table.
 
-## 📁 Report Pages
+## 📊 Key Metrics
 
-### 1. Monthly View
-A month-by-month breakdown of ER activity, including:
-- Area charts trending patient volume, wait time, and related KPIs over time
-- KPI cards for quick-glance metrics
-- **Patient Admission Status** (pivot table)
-- **% of Patients Seen Within 30 Min** (donut chart)
-- **No of Patients by Gender** (donut chart)
-- **No of Patients by Day and Hour** (column chart)
-- Bar/column charts for additional breakdowns
-- Slicers for filtering by date/period
-
-### 2. Consolidated View
-A summary page mirroring the Monthly View's visuals but aggregated across the full dataset (no monthly split) — useful for a high-level, all-time snapshot of:
-- Patient Admission Status
-- % of Patients Seen Within 30 Min
-- No of Patients by Gender
-- No of Patients by Day and Hour
-
-### 3. Patients Details
-A detail-level page featuring a searchable/filterable data table of individual patient records, with slicers to drill into specific patients.
-
-## 🗂️ Data Model
-
-| Table | Purpose |
+| Metric | Value |
 |---|---|
-| `Hospital ER_Data` | Main fact table containing patient-level ER records |
-| `Date Table` | Supporting date dimension for time-based filtering and trending |
+| Total Patients Analyzed | 9,216 |
+| Average Wait Time | 35.3 minutes |
+| Patient Satisfaction Score | 4.99 / 5 |
+| Patients Referred to Departments | 3,816 |
 
-### Key Fields
+## 🗂️ Report Pages
 
-| Field | Description |
+### 1️⃣ Monthly View
+- Trends in patient volume, admission status, and referrals
+- Patient demographics: age, race, gender
+- Patient volume by day and hour
+- Admission status breakdown (pivot table)
+- % of patients seen within 30 minutes (donut chart)
+- Patient distribution by gender (donut chart)
+
+### 2️⃣ Consolidated View
+- Summary KPIs over a customizable date range (slicer-driven)
+- Same suite of trend and operational visuals as the Monthly View, rolled up for flexible period-over-period analysis
+
+### 3️⃣ Patients Details
+- Granular, patient-level data table for drill-through and ad hoc analysis
+- Fields: Patient ID, Patient Full Name, Gender, Age, Wait Time, Admission Status, Department Referral
+
+## 🔍 Visuals Used
+
+- **Area charts** — daily trend sparklines for patient volume, average wait time, satisfaction score, and department referrals
+- **Donut charts** — % of patients seen within 30 minutes; patient distribution by gender
+- **Clustered bar / column charts & column chart** — demographic breakdowns and patients by day and hour
+- **Pivot tables** — patient admission status and other cross-tab summaries
+- **Cards** — headline KPIs (total patients, avg. wait time, satisfaction score, referrals)
+- **Slicers** — date range and other filters
+- **Table** — patient-level detail grid
+
+## 🧱 Data Model
+
+| Table | Description |
 |---|---|
-| Patient Id | Unique patient identifier |
-| Patient Full Name | Patient name |
-| Patient Age / Age Group | Patient age and age bucket |
-| Patient Gender | Patient gender |
-| Patient Race | Patient race/ethnicity |
-| Admission Status / Patient Admission Flag | Whether the patient was admitted |
-| Department Referral | Department the patient was referred to |
-| No of Patients | Patient count measure |
-| No of Patient Referred | Referral count measure |
-| Patient Waittime / Avg Wait Time | Time patient waited to be seen |
-| Waittime Interval / Waittime Status | Bucketed wait-time category |
-| Satisfication Score | Patient satisfaction rating |
-| Date / Month Name / Month & Year / Day Name / Year | Date dimension attributes |
+| `Hospital ER_Data` | Core fact table: Patient Id, Patient Full Name, Patient Gender, Patient Age, Age Group, Patient Race, Patient Waittime, Avg Wait Time, Waittime Interval, Waittime status, Satisfication Score, Admission Status, Patient Admission Flag, Department Referral, No of Patients, No of patient Referred |
+| `Date Table` | Date dimension: Date, Day Name, Month Name, Year (used for time intelligence and the Date Hierarchy) |
 
-## 🛠️ Tech Stack
-- **Power BI Desktop** (.pbix)
-- DAX measures for KPIs (patient counts, average wait time, etc.)
-- Visuals: area charts, column/bar charts, donut charts, pivot tables, cards, slicers
+## 🛠️ Tools Used
 
-## 🚀 Getting Started
+- **Power BI Desktop** — data modeling, DAX measures, and report design
+
+## 🚀 How to Use
 
 1. Clone or download this repository.
-2. Open `my_pbi34.pbix` in [Power BI Desktop](https://powerbi.microsoft.com/desktop/) (free).
-3. If prompted, point the data source connection to your own copy of the ER dataset, or use the embedded data as-is.
-4. Use the slicers on each page to filter by date, department, gender, or admission status.
-5. Navigate between pages using the in-report page navigator buttons.
+2. Open `my_pbi34.pbix` in **Power BI Desktop**.
+3. Use the date slicers on the Monthly View / Consolidated View pages to filter the period of analysis.
+4. Navigate between pages using the in-report page navigator buttons.
+5. Drill into individual patients on the **Patients Details** page.
 
-## 📌 Notes
-- Replace this section with any data-source/privacy notes relevant to your actual patient data (e.g., anonymization, sample/demo data disclaimer) before publishing if the dataset contains real patient information.
-- Consider adding a screenshot/GIF of each report page here for visual context (GitHub renders images well in READMEs).
+## 📁 Repository Structure
 
----
-*Feel free to adjust wording, badges, or add a license section depending on how you intend to share this repo.*
+```
+├── my_pbi34.pbix     # Power BI report file
+└── README.md         # Project documentation
+```
+
+## 💡 Key Takeaway
+
+This project demonstrates how Power BI can turn raw ER operational data into actionable insights — helping hospital management track patient flow, reduce wait times, and improve patient satisfaction through informed, data-backed decisions.
